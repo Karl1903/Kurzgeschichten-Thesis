@@ -19,7 +19,7 @@ export class TextToPictureService {
 getPicturefromTextwithDallE(textPrompt:string): Observable<any>{
   const headers = new HttpHeaders({
     'Content-Type': 'application/json',
-    'Authorization': 'Bearer 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'
+    'Authorization': 'Bearer Placeholder_Paste_API_Key_at_that_Place'
   });
   const data = {
     prompt: textPrompt,
@@ -46,7 +46,7 @@ getPicturefromTextwithDallE(textPrompt:string): Observable<any>{
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json',
-        'Authorization': 'Bearer 6a1e44ec-fdbe-4cef-8971-91ab87229780'
+        'Authorization': 'Bearer Placeholder_Paste_API_Key_at_that_Place'
       });
       const data = {
         prompt: "Farbiger Concept-Art-Stil mit scharfer Grafik: " + textPrompt,
@@ -59,7 +59,7 @@ getPicturefromTextwithDallE(textPrompt:string): Observable<any>{
         .pipe(
           catchError((error) => {
             console.error('Error:', error);
-            throw error; // Rethrow the error to propagate it to the component
+            throw error; // Rethrow the error to propagate it to the component.
           })
         ); }
       
@@ -73,12 +73,12 @@ getPicturefromTextwithDallE(textPrompt:string): Observable<any>{
       const headers = new HttpHeaders({
         'Content-Type': 'application/json',
         'accept': 'application/json',
-        'Authorization': 'Bearer 6a1e44ec-fdbe-4cef-8971-91ab87229780'
+        'Authorization': 'Bearer Placeholder_Paste_API_Key_at_that_Place'
       });
 
      return this.http.get('https://cloud.leonardo.ai/api/rest/v1/generations/' + pictureID, { headers })
         .pipe(
           catchError((error) => {
             console.error('Error:', error);
-            throw error; // Rethrow the error to propagate it to the component
+            throw error; // Rethrow the error to propagate it to the component.
                                                     }));}}
