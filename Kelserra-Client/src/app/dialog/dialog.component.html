@@ -1,0 +1,18 @@
+
+
+
+
+<div class="dialog-container">
+
+<h2 mat-dialog-title>Bitte gib den Name deiner Kurzgeschichte ein:</h2>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput #templateName placeholder="Name der Kurzgeschichte...">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-button [mat-dialog-close]="false" alt="abbrechen. Zurück zur Listen mit den Kurzgeschichten.">Abbrechen</button>
+  <button mat-button color="primary" (click)="onSubmit(templateName.value)" alt="Kurzgeschichte mit dem eingetragenen Namen festlegen.">OK</button>
+</mat-dialog-actions>
+
+</div>

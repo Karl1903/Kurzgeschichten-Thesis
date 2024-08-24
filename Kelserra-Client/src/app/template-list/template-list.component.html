@@ -1,0 +1,36 @@
+
+
+<h3 style="padding:23px; margin-left: 23px; margin-top: 23px;">Herzlich Willkommen in Kelserra.</h3>
+
+<p class="start-text" alt="start-text.">
+  
+  Wir freuen uns, dass du den Weg zu uns gefunden hast. <br><br>
+  
+  Denn wir können einige helfende Hände dringend gebrauchen. Leider ist unser Dorf niedergebrannt.<br><br>
+
+  Das große Feuer, das der schwarze Drache hinterlassen hat, war leider zu viel für unsere Feuerwehr. <br><br>
+
+  Ja, das ist leider eine traurige Geschichte: Die Legende unseres Dorfes Kelserra.</p>
+<div>
+  <img class="startScreenPics" src="../../assets/KelserraPic.jpg" alt="Bild der Landschaft der Region Kelserra.">
+         
+           </div>
+
+<p class="start-text" alt="start-text.">  
+  
+  Wenn du neu in Kelserra bist, kannst du ja gern in diese Geschichte reinlesen!<br><br>
+
+  Ansonsten freuen wir uns auch, wenn du uns direkt eine deiner Geschichten erzählst!<br><br>
+</p>
+
+<ol>
+    <!--The ngFor-Directive tells the system to iterate through
+    the given templateList and to create a <li>-Element for each entry. (GUI.001).
+    The Click on a List-Element calls the NavigateToTextEditor-Method for the clicked Template. (GUI.003) -->
+  <li *ngFor="let template of templateList; let c = index" (click)="navigateToTextEditor(c)" alt="Name der Kurzgeschichte. Bitte anklicken, wenn du diese Kurzgeschichte bearbeiten willst.">
+    {{ c + 1 }}. {{ template.templateName }}
+  </li>
+  <li (click)="createNewTemplate()" alt="Weitere Kurzgeschichte starten. Bitte anklicken, dann kannst du den Namen deiner Kurzgeschichte eintippen.">
+           &plus; <!-- Plus-Icon: &plus; -->
+    </li>
+</ol>

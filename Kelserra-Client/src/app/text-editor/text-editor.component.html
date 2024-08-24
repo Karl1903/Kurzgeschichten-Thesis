@@ -1,0 +1,128 @@
+
+
+<!--1. text fields to be edited by the user (GUI.004). -->
+
+<div class="book-rack">
+
+<div class="book-rack-top">
+
+  <!--name of the template-->
+  <h4 id="template-name" alt="Name der Kurzgeschichte.">{{ templateName }}</h4>
+
+  <!--the Click on this button calls the method navigateToTemplateList. GUI.007. -->
+  <button mat-button (click)="navigateToTemplateList()"
+                      class="navigation-button"
+                      alt="Zurück ins Hauptmenü.">Zurück ins Hauptmenü</button>
+ 
+</div>
+
+<div *ngFor="let field of textfields; let c = index" class="container">
+
+<div class="book-rack-middle">
+ 
+  <div class="text-editor">
+      <!-- The Text field can be either in Edit mode or not-->
+        <div *ngIf="!field.editMode; else editModeTemplate"
+              class="text-field">
+          <!-- binds the HTML-elements to the values of the textField array of the TypeScript-File. -->
+          <!-- Makes the template use Line-breaks if the text is too long. -->
+          <p [style.white-space]="field.text.includes('\n') ? 'pre' : 'pre-wrap'"
+              wrap="soft" rows="6"
+              maxlength="333" alt="Textfeld fest. Nicht in Bearbeitungs-Modus.">{{field.text}}</p>
+
+        </div>
+
+          <ng-template #editModeTemplate lang="de">
+            <form [formGroup]="textForm"
+                  class="text-field-edit-form"
+                  lang="de">
+              <div class="text-field-edit-wrapper" lang="de">
+                 <!--Property binding: the [spellcheck]-attribute is set as target property. 
+                  target properties are the DOM properties to which new values can get assigned in the Typescript File. -->
+                  <textarea class="text-field-segment" 
+                            lang="de"
+                            id="text-field-{{c}}"
+                            formControlName="textContent"
+                            wrap="soft"
+                            rows="6"
+                            maxlength="333"
+                            [spellcheck]="field.grammarCheckOn"
+                            alt="Textfeld in Bearbeitungs-Modus."></textarea>
+                  <!-- 4. button to turn the grammar check (mistakes red underlined.) of the written text in the text field on and off. (GUI.006).-->
+                  <button mat-button (click)="checkGrammar(c)"
+                                      class="grammar-test-button"
+                                      alt="Grammatik-Text aktivieren.">
+                                      {{grammatikButtonText}}
+                                    </button>
+                  <!--With the Click on this button the text field leaves the Edit-Mode 
+                            and the Text-Content is written into the concrete textField instead. GUI.004.-->
+                  <button mat-button (click)="saveTextField(c)"
+                                      class="save-button"
+                                      alt="Textfeld speichern.">
+                    &#10003;  <!--Check mark icon: &#10003; -->
+                 
+                  </button>
+              </div>
+            </form>
+          </ng-template>
+
+        </div>
+        <div class="text-edit-button-wrapper" [ngStyle]="{'visibility': (!anyTextFieldInEditMode() && !field.editModeForbidden) ? 'visible' : 'hidden'}">
+         <!-- When the Pencil button gets clicked, 
+                    the text field can be edited. (GUI.004).-->
+              <button mat-button (click)="startEditMode(c)"
+                                 class="text-edit-button"
+                                 alt="Textfeld bearbeiten.">
+                  &#9998;  <!--Pencil-Icon: &#9998; -->
+        </button>
+
+          </div>
+
+          <!-- present the created picture to the user inside a frame. GUI.005.-->
+          <div class="created-picture-frame" [style.margin-left.px]="field.editMode ? 296 : 263">
+            <span *ngIf="field.picturesLoading" class="spinner"></span>
+         <img *ngIf="field.picturesCreated && !field.picturesLoading" id="createdPicture" class="created-picture" [src]="field.pictureURLs[field.pictureSelector]" alt="Das generierte Bild.">
+         
+         </div>
+         
+
+         <div *ngIf="field.picturesCreated && !field.picturesLoading && !(field.pictureURLs.length == 1)" class="arrow-button"> <!--*ngIf="field.picturesCreated"-->
+          <button mat-button (click)="incrementPictureSelector(c)" >&#10148;</button>
+          <p class="pictureSelector"> {{field.pictureSelector+1}}/4 </p>
+         </div>
+      
+          <!-- button to get the picture from the text-to-picture-generator-api
+            for the corresponding text field. GUI.005.-->
+            <button mat-button *ngIf="!field.editMode && !field.picturesCreated" class="create-pictures-button" (click)="createPicturesFromText(c)" alt="Bild zum Textfeld generieren lassen.">
+        
+              Bilder generieren.
+           
+            </button>
+
+      </div>
+
+      <div class="book-rack-bottom">
+
+          <!--button to create a new textField. GUI.004.-->
+          <button *ngIf="!anyTextFieldInEditMode() && !field.editModeForbidden &&field.lastField" 
+          class="create-text-field-button" (click)="createTextField()" alt="Button-Klick: Regal-Reihe hinzufügen, das heißt das nächste Textfeld hinzufügen.">
+            Regal-Reihe hinzufügen.
+          </button>
+           <!--the Click on this button calls the method navigateToTemplateList. GUI.007. -->
+            <button mat-button *ngIf="!anyTextFieldInEditMode() && field.lastField"
+                               (click)="navigateToTemplateList()" 
+                               id="navigation-button-bottom"
+                               class="navigation-button" 
+                               alt="Zurück ins Hauptmenü.">Zurück ins Hauptmenü</button>
+          
+      
+          
+      </div>
+
+    </div>
+
+  </div>
+    
+   
+
+ 

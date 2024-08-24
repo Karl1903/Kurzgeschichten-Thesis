@@ -1,0 +1,732 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proof-of-concept documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">proof-of-concept documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TemplateListComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/template-list/template-list.component.ts</code>
+</p>
+
+
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-template-list</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./template-list.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./template-list.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#templateList" >templateList</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#createNewTemplate" >createNewTemplate</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToTextEditor" >navigateToTextEditor</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router, dialog: MatDialog)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/template-list/template-list.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>dialog</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialog</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createNewTemplate"></a>
+                    <span class="name">
+                            <span class="modifier">Async</span>
+                        <span ><b>createNewTemplate</b></span>
+                        <a href="#createNewTemplate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>createNewTemplate()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/template-list/template-list.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>With the Click on the Row of the Template List with
+the Plus-icon the Dialog is started
+to create a new blank Template. GUI.002.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToTextEditor"></a>
+                    <span class="name">
+                        <span ><b>navigateToTextEditor</b></span>
+                        <a href="#navigateToTextEditor"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToTextEditor(templateIndex: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/template-list/template-list.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>The Click on the row navigates the Webapplication to the
+Text-Editor-Component and transmits the name of the template
+that was clicked together with the information if it&#39;s a new (blank) template. GUI.003.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>templateIndex</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="27"
+                                    class="link-to-prism">src/app/template-list/template-list.component.ts:27</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>the method specifies what happens when the Component is initialized.
+The Start properties of the TemplateList are defined and assigned to the List. GUI.001.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="templateList"></a>
+                    <span class="name">
+                        <span ><b>templateList</b></span>
+                        <a href="#templateList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/template-list/template-list.component.ts:17</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>the TemplateList with the start templates (short stories). GUI.001.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+import {MatDialog, MatDialogConfig} from &quot;@angular/material/dialog&quot;;
+import { DialogComponent } from &#x27;../dialog/dialog.component&#x27;;
+
+@Component({
+  selector: &#x27;app-template-list&#x27;,
+  templateUrl: &#x27;./template-list.component.html&#x27;,
+  styleUrl: &#x27;./template-list.component.css&#x27;
+})
+export class TemplateListComponent {
+
+  /**
+   * the TemplateList with the start templates (short stories). GUI.001.
+   */
+  templateList: {templateIndex: number, templateName: string, newTemplate: boolean}[] &#x3D; [];
+  
+  // Der Router für die Navigation zwischen den Webpages
+  // der Komponenten wird an dieser Stelle initialisiert.
+  constructor(private router: Router, private dialog: MatDialog) {  }
+
+  /**
+   * the method specifies what happens when the Component is initialized.
+     The Start properties of the TemplateList are defined and assigned to the List. GUI.001.
+   */
+  ngOnInit(): void {         
+
+    this.templateList &#x3D; [{templateIndex: 1, templateName: &quot;Die Legende von Kelserra&quot;, newTemplate: false}, 
+                         {templateIndex: 2, templateName: &quot;Der Prediger von Kantiki&quot;, newTemplate: false},
+                         {templateIndex: 3, templateName: &quot;Drei Mal darfst du raten&quot;, newTemplate: false},
+                         {templateIndex: 4, templateName: &quot;Neue Stadt neues Glück&quot;, newTemplate: false},
+                         {templateIndex: 5, templateName: &quot;Ritter Hannes trifft seinen Meister&quot;, newTemplate: false},
+                         {templateIndex: 6, templateName: &quot;Der Krieger des Westens&quot;, newTemplate: false}];
+   }
+
+
+  /**
+   * The Click on the row navigates the Webapplication to the 
+   * Text-Editor-Component and transmits the name of the template 
+   * that was clicked together with the information if it&#x27;s a new (blank) template. GUI.003.
+   * @param templateIndex 
+   */
+  navigateToTextEditor(templateIndex: number): void {
+  
+    //console.log(&#x27;the template is clicked: &#x27;, template);
+
+    // The Navigation to the Text-Editor-Component. The name of the template 
+    // that has the same name as the clicked List-Element is permitted to the 
+    // Text-Editor-Component together with the information if the template is blank as parameters.
+      this.router.navigate([&quot;/text-editor&quot;, { templateName: this.templateList[templateIndex].templateName, 
+                                              newTemplate: this.templateList[templateIndex].newTemplate}]);
+             
+                                                                  }
+
+  /**
+   * With the Click on the Row of the Template List with 
+   * the Plus-icon the Dialog is started 
+   * to create a new blank Template. GUI.002.
+   */
+  async createNewTemplate(){
+
+    const dialogConfig &#x3D; new MatDialogConfig();
+
+    dialogConfig.disableClose &#x3D; true; //click anywhere in the canvas to close the Dialog.
+    dialogConfig.autoFocus &#x3D; true;
+    dialogConfig.position &#x3D; {
+      left: &#x27;270px&#x27;
+    }
+    dialogConfig.width &#x3D; &quot;430px&quot;;
+    dialogConfig.data &#x3D; {
+      id: 1,
+      title: &#x27;Name deiner Kurzgeschichte.&#x27;
+  };
+
+    // 1. get a dialog reference (the object in the constructor of the Dialog-Component).
+    // 2. start the dialog. GUI.002.
+    const dialog &#x3D; this.dialog.open(DialogComponent, dialogConfig);
+
+    dialog.afterClosed().subscribe(
+      templateName &#x3D;&gt; {console.log(&quot;Dialog output:&quot;, templateName)
+      if(templateName !&#x3D; false){
+      
+      this.templateList.push({templateIndex: this.templateList.length, templateName: templateName, newTemplate: true});
+                                                  }
+           }
+               );   }}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">
+
+&lt;h2 style&#x3D;&quot;padding:30px;&quot;&gt;Herzlich Willkommen in Kelserra.&lt;/h2&gt;
+
+&lt;p class&#x3D;&quot;start-text&quot; alt&#x3D;&quot;start-text.&quot;&gt;
+  
+  Wir freuen uns, dass du den Weg zu uns gefunden hast. &lt;br&gt;&lt;br&gt;
+  
+  Denn wir können einige helfende Hände dringend gebrauchen. Leider ist unser Dorf niedergebrannt.&lt;br&gt;&lt;br&gt;
+
+  Das große Feuer, das der schwarze Drache hinterlassen hat, war leider zu viel für unsere Feuerwehr. &lt;br&gt;&lt;br&gt;
+
+  Ja, das ist leider eine traurige Geschichte: Die Legende unseres Dorfes Kelserra.
+
+  Wenn du neu in Kelserra bist, kannst du ja gern in diese Geschichte reinlesen!&lt;br&gt;&lt;br&gt;
+
+  Ansonsten freuen wir uns auch, wenn du uns direkt eine deiner Geschichten erzählst!&lt;br&gt;&lt;br&gt;
+&lt;/p&gt;
+
+&lt;ol&gt;
+    &lt;!--The ngFor-Directive tells the system to iterate through
+    the given templateList and to create a &lt;li&gt;-Element for each entry. (GUI.001).
+    The Click on a List-Element calls the NavigateToTextEditor-Method for the clicked Template. (GUI.003) --&gt;
+  &lt;li *ngFor&#x3D;&quot;let template of templateList; let c &#x3D; index&quot; (click)&#x3D;&quot;navigateToTextEditor(c)&quot; alt&#x3D;&quot;Name der Kurzgeschichte. Bitte anklicken, wenn du diese Kurzgeschichte bearbeiten willst.&quot;&gt;
+    {{ c + 1 }}. {{ template.templateName }}
+  &lt;/li&gt;
+  &lt;li (click)&#x3D;&quot;createNewTemplate()&quot; alt&#x3D;&quot;Weitere Kurzgeschichte starten. Bitte anklicken, dann kannst du den Namen deiner Kurzgeschichte eintippen.&quot;&gt;
+           &amp;plus; &lt;!-- Plus-Icon: &amp;plus; --&gt;
+    &lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><h2 style="padding:30px;">Herzlich Willkommen in Kelserra.</h2><p class="start-text" alt="start-text.">    Wir freuen uns, dass du den Weg zu uns gefunden hast. <br><br>    Denn wir können einige helfende Hände dringend gebrauchen. Leider ist unser Dorf niedergebrannt.<br><br>  Das große Feuer, das der schwarze Drache hinterlassen hat, war leider zu viel für unsere Feuerwehr. <br><br>  Ja, das ist leider eine traurige Geschichte: Die Legende unseres Dorfes Kelserra.  Wenn du neu in Kelserra bist, kannst du ja gern in diese Geschichte reinlesen!<br><br>  Ansonsten freuen wir uns auch, wenn du uns direkt eine deiner Geschichten erzählst!<br><br></p><ol>    <!--The ngFor-Directive tells the system to iterate through    the given templateList and to create a <li>-Element for each entry. (GUI.001).    The Click on a List-Element calls the NavigateToTextEditor-Method for the clicked Template. (GUI.003) -->  <li *ngFor="let template of templateList; let c = index" (click)="navigateToTextEditor(c)" alt="Name der Kurzgeschichte. Bitte anklicken, wenn du diese Kurzgeschichte bearbeiten willst.">    {{ c + 1 }}. {{ template.templateName }}  </li>  <li (click)="createNewTemplate()" alt="Weitere Kurzgeschichte starten. Bitte anklicken, dann kannst du den Namen deiner Kurzgeschichte eintippen.">           &plus; <!-- Plus-Icon: &plus; -->    </li></ol></div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'TemplateListComponent', 'selector': 'app-template-list'},{'name': 'TextEditorComponent', 'selector': 'app-text-editor'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TemplateListComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TemplateListComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

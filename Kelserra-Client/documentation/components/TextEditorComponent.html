@@ -1,0 +1,1811 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>proof-of-concept documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">proof-of-concept documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  TextEditorComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/text-editor/text-editor.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-text-editor</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./text-editor.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./text-editor.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeTextfieldIndex" >activeTextfieldIndex</a>
+                            </li>
+                            <li>
+                                <a href="#grammatikButtonText" >grammatikButtonText</a>
+                            </li>
+                            <li>
+                                <a href="#templateName" >templateName</a>
+                            </li>
+                            <li>
+                                <a href="#textfields" >textfields</a>
+                            </li>
+                            <li>
+                                <a href="#textForm" >textForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#anyTextFieldInEditMode" >anyTextFieldInEditMode</a>
+                            </li>
+                            <li>
+                                <a href="#checkGrammar" >checkGrammar</a>
+                            </li>
+                            <li>
+                                <a href="#createPicturesFromText" >createPicturesFromText</a>
+                            </li>
+                            <li>
+                                <a href="#createTextField" >createTextField</a>
+                            </li>
+                            <li>
+                                <a href="#incrementPictureSelector" >incrementPictureSelector</a>
+                            </li>
+                            <li>
+                                <a href="#navigateToTemplateList" >navigateToTemplateList</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveTextField" >saveTextField</a>
+                            </li>
+                            <li>
+                                <a href="#sleep" >sleep</a>
+                            </li>
+                            <li>
+                                <a href="#startEditMode" >startEditMode</a>
+                            </li>
+                            <li>
+                                <a href="#stopEditMode" >stopEditMode</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(route: ActivatedRoute, fb: FormBuilder, httpClient: HttpClient, router: Router, textToPictureService: <a href="../injectables/TextToPictureService.html" target="_self">TextToPictureService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/text-editor/text-editor.component.ts:45</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                    <code>ActivatedRoute</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>textToPictureService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/TextToPictureService.html" target="_self" >TextToPictureService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="anyTextFieldInEditMode"></a>
+                    <span class="name">
+                        <span ><b>anyTextFieldInEditMode</b></span>
+                        <a href="#anyTextFieldInEditMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>anyTextFieldInEditMode()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="208"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:208</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Returns true if any text field is currently in edit mode. GUI.004.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="checkGrammar"></a>
+                    <span class="name">
+                        <span ><b>checkGrammar</b></span>
+                        <a href="#checkGrammar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>checkGrammar(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="289"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:289</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>The spellcheck-Attribut has got a property binding to the field.grammarCheckOn boolean.
+If the user clicks the button to turn on the Grammar Check the boolean is set to true.
+At the same time the button is transformed to turn off the Grammar Check
+with the next click which then sets the field.grammarCheckOn to false. GUI.006.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createPicturesFromText"></a>
+                    <span class="name">
+                        <span ><b>createPicturesFromText</b></span>
+                        <a href="#createPicturesFromText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createPicturesFromText(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="228"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:228</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><ol>
+<li>The current Text from the corresponding textfield gets sent to the Service
+of the Text-to-Picture-Generator with the HTTP-Post-Request.</li>
+<li>The Picture-Generation takes some time, that&#39;s the reason that the Server
+returns an ID at first.</li>
+<li>After that the thread is put to sleep for some time,
+then the retrieved ID gets inserted into a second HTTP-Get-Request that gets
+sent to the Text-to-Picture-Generator.
+The Text-to-Picture-Service returns the 4 pictures created that are connected to that ID.</li>
+<li>Finally, the Links to the 4 pictures get inserted in the textfields array, which is
+connected to the the HTML-Layout via Input-Binding (class: created-picture. HTML-Attribute: src). GUI.005.</li>
+</ol>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createTextField"></a>
+                    <span class="name">
+                        <span ><b>createTextField</b></span>
+                        <a href="#createTextField"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createTextField()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="333"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:333</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Create textfield after the current last textfield. GUI.004.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="incrementPictureSelector"></a>
+                    <span class="name">
+                        <span ><b>incrementPictureSelector</b></span>
+                        <a href="#incrementPictureSelector"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>incrementPictureSelector(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="325"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:325</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>The method to increment the pictureSelector and cycle through values 0, 1, 2, 3.
+The method gets called when the user clicks the arrow-button to show a different picture.
+There are 4 pictures provided for each textField, if the user finished the picture creation process. GUI.005.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="navigateToTemplateList"></a>
+                    <span class="name">
+                        <span ><b>navigateToTemplateList</b></span>
+                        <a href="#navigateToTemplateList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>navigateToTemplateList()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="274"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:274</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>the method navigates the Client to the Template-List-Component (Main Menu). (GUI.007).</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:64</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveTextField"></a>
+                    <span class="name">
+                        <span ><b>saveTextField</b></span>
+                        <a href="#saveTextField"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveTextField(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="184"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:184</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><ol>
+<li>The method updates the value of property &quot;text&quot; of the textfield that is in edit-mode at the time
+the check-mark-button gets clicked (see HTML-Layout: class &quot;save-button&quot;). (GUI.004).</li>
+<li>Calls the method stopEditMode. (GUI.004).</li>
+</ol>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sleep"></a>
+                    <span class="name">
+                        <span ><b>sleep</b></span>
+                        <a href="#sleep"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>sleep(duration: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="315"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:315</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>make the thread sleep. Returns the observable timer that emits the number
+ 0 as the notification after having waited for the duration to pass. GUI.005.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>duration</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="startEditMode"></a>
+                    <span class="name">
+                        <span ><b>startEditMode</b></span>
+                        <a href="#startEditMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>startEditMode(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="153"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:153</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>The method puts the textfield that is connected to the button clicked into
+the edit-mode, so that the text of the textfield can be extended, deleted etc. GUI.004.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="stopEditMode"></a>
+                    <span class="name">
+                        <span ><b>stopEditMode</b></span>
+                        <a href="#stopEditMode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>stopEditMode(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/text-editor/text-editor.component.ts:172</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>The method stops the edit mode for the Text field that is connected to the button clicked (with index c).
+That means that the static part of the Textfield gets displayed and the dynamic part gets hidden. GUI.004.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeTextfieldIndex"></a>
+                    <span class="name">
+                        <span ><b>activeTextfieldIndex</b></span>
+                        <a href="#activeTextfieldIndex"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | null</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/text-editor/text-editor.component.ts:42</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Variable to track the active textfield.
+Needed to reassure that only one textfield is in edit mode at a given point in time. GUI.004.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="grammatikButtonText"></a>
+                    <span class="name">
+                        <span ><b>grammatikButtonText</b></span>
+                        <a href="#grammatikButtonText"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&quot;Grammatik-Test einschalten.&quot;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/text-editor/text-editor.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Text of the Button with that the user can turn on/off the grammar test. GUI.006.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="templateName"></a>
+                    <span class="name">
+                        <span ><b>templateName</b></span>
+                        <a href="#templateName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/text-editor/text-editor.component.ts:22</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="textfields"></a>
+                    <span class="name">
+                        <span ><b>textfields</b></span>
+                        <a href="#textfields"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>literal type[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/text-editor/text-editor.component.ts:26</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>The text fields that the user can edit and write his short stories into.
+Text fields have got different properties to control the workflow of the user interaction.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="textForm"></a>
+                    <span class="name">
+                        <span ><b>textForm</b></span>
+                        <a href="#textForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/text-editor/text-editor.component.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &quot;@angular/core&quot;;
+import { ActivatedRoute } from &quot;@angular/router&quot;;
+import { FormBuilder, FormGroup, Validators } from &quot;@angular/forms&quot;;
+
+import { HttpClient } from &#x27;@angular/common/http&#x27;;
+
+import { Router } from &quot;@angular/router&quot;;
+import { TextToPictureService } from &quot;../text-to-picture.service&quot;;
+import { timer } from &#x27;rxjs&#x27;;
+
+
+@Component({
+  selector: &#x27;app-text-editor&#x27;,
+  templateUrl: &#x27;./text-editor.component.html&#x27;,
+  styleUrl: &#x27;./text-editor.component.css&#x27;
+})
+
+export class TextEditorComponent implements OnInit {
+
+  templateName: string &#x3D; &#x27;&#x27;;
+
+  /**  The text fields that the user can edit and write his short stories into.
+       Text fields have got different properties to control the workflow of the user interaction. */
+  textfields: {
+    text: string; // Text property. GUI.004.
+    editMode: boolean; // property to keep track if the text field is in edit mode or not. GUI.004.
+    editModeForbidden: boolean; // property to lock the textFields that the Developer provides to the User as Inspiration for Creative Writing. GUI.004.
+    pictureID: string; // Picture creation ID. GUI.005.
+    pictureURLs: string[]; // Picture URLs. For 1 textfield 4 pictures get created with the HTTP-Call to the Leonardo.AI-API. GUI.005.
+    picturesLoading: boolean; //Needed to check if the user needs to get shown the Loading Animation. GUI.005.
+    picturesCreated: boolean; // Needed to check if the user needs to get shown the &quot;Bilder generieren.&quot;-Button. GUI.005.
+    pictureSelector: number; //Needed to let the user cycle through the 4 different pictures. GUI.005.
+    lastField: boolean; //Needed to decide wether to render the create-text-field-button (Needed just at the bottom for the last Text Field.). GUI.004.
+    grammarCheckOn: boolean}[] &#x3D; []; // spell check flag. GUI.006.
+
+  textForm: FormGroup;
+
+  /**  Variable to track the active textfield.
+   Needed to reassure that only one textfield is in edit mode at a given point in time. GUI.004.*/
+  activeTextfieldIndex: number | null &#x3D; null;
+
+  /** Text of the Button with that the user can turn on/off the grammar test. GUI.006. */
+  grammatikButtonText: string &#x3D; &quot;Grammatik-Test einschalten.&quot;;
+
+
+  constructor(
+    private route: ActivatedRoute,
+    private fb: FormBuilder,
+    private httpClient: HttpClient,
+    private router: Router,
+    private textToPictureService: TextToPictureService) {
+    this.textForm &#x3D; this.fb.group({
+      // Text fields should have a maximum of 333 Characters,
+      //so the prompt to be sent to the Text-to-Picture-Generator
+      // doesnt get too long and therefore has
+      // a higher chance to be precise and produce good results. GUI.004.
+      textContent: [&#x27;&#x27;, Validators.maxLength(333)],
+    });
+  }
+
+  //this method specifies what happens when the Component is initialized.
+  ngOnInit(): void {
+    // The name of the template that was sent at the point in time when
+    // the navigation from the template-list-component
+    // to the text-editor-component happened,
+    // is retrieved from the Router-Parameters. GUI.003.
+    this.templateName &#x3D; this.route.snapshot.paramMap.get(&#x27;templateName&#x27;) || &#x27;&#x27;;
+
+    // The information true/false if the Template has content yet (false ---&gt; not a new Template),
+    // or if it is a new blank Template created by the User (true ---&gt; new Template, no content till this point in time). GUI.003.
+    const newTemplate &#x3D; this.route.snapshot.paramMap.get(&#x27;newTemplate&#x27;) || &#x27;&#x27;;
+
+    //console.log(&quot;template Name: &quot; + this.templateName)
+
+    //the Local Text-File that has the same name as the Template clicked by the user gets read.
+    //Text Segments from the Text File get pushed into the Text-Fields-Array of the Text-Editor-Component. GUI.004.
+    const templateFileLocation &#x3D; &#x60;../../assets/Templates/${this.templateName.replace(/\s/g, &quot;&quot;)}/text/text-segments.txt&#x60;
+    //console.log(&#x60;../../assets/Templates/${this.templateName.replace(/\s/g, &quot;&quot;)}/text/text-segments.txt&#x60;);
+    //console.log(newTemplate);
+    if (newTemplate &#x3D;&#x3D; &quot;false&quot;) {
+
+      this.httpClient
+        .get(templateFileLocation, { responseType: &#x27;text&#x27; })
+        .subscribe((data) &#x3D;&gt; {
+          //console.log(data);
+          const templateSegments &#x3D; data.split(&#x27;\r\n&#x27;);
+          //console.log(&#x60;../../assets/Templates/${this.templateName}/Picture/${templateSegments.length}.jpg&#x60;);
+          //console.log(templateSegments)
+          for (let c &#x3D; 0; c &lt;&#x3D; templateSegments.length - 2; c++) {
+            //const words &#x3D; templateSegments[c].split(&#x27; &#x27;);
+            //const grammarFlags &#x3D; words.map(() &#x3D;&gt; false); // Initialize all words as grammatically correct.
+
+            //console.log(&#x60;../../assets/Templates/${this.templateName.replace(/\s/g, &quot;&quot;)}/pictures/${c+1}.jpg&#x60;);
+            this.textfields.push({
+              text: &#x60;${c + 1}. ${templateSegments[c]}&#x60;,
+              editMode: false,
+              editModeForbidden: true,
+              pictureID: &quot;&quot;,
+              pictureURLs: [&#x60;../../assets/Templates/${this.templateName.replace(/\s/g, &quot;&quot;)}/pictures/${c+1}.jpg&#x60;],
+              picturesLoading: false,
+              picturesCreated: true,
+              pictureSelector: 0,
+              lastField: false,
+              grammarCheckOn: false
+            });
+          }
+          
+          //Dont forbid editing the last textField of the template if it is not the Legend of Kelserra.
+          //The Legend of Kelserra explains the story of the Webapplication and isn&#x27;t meant to be edited. GUI.004.
+          if(this.templateName !&#x3D;&#x3D; &quot;Die Legende von Kelserra&quot;){
+          this.textfields.push({
+            text: templateSegments[templateSegments.length-1],
+            editMode: false,
+            editModeForbidden: false,
+            pictureID: &quot;&quot;,
+            pictureURLs: [&#x60;../../assets/Templates/${this.templateName.replace(/\s/g, &quot;&quot;)}/pictures/${templateSegments.length}.jpg&#x60;],
+            picturesLoading: false,
+            picturesCreated: true,
+            pictureSelector: 0,
+            lastField: true,
+            grammarCheckOn: false});
+
+          } else {
+            //The Last Field in the Legend of Kelserra.
+            this.textfields[templateSegments.length-2].lastField &#x3D; true;}
+          //console.log(this.textfields[templateSegments.length].editModeForbidden)
+        });
+
+      //Case: The user created a new blank Template.
+    } else if (newTemplate &#x3D;&#x3D; &quot;true&quot;) {
+      this.textfields.push({
+        text: &quot;Starte deine Kurzgeschichte hier.&quot;,
+        editMode: false,
+        editModeForbidden: false,
+        pictureID: &quot;&quot;,
+        pictureURLs: [],
+        picturesLoading: false,
+        picturesCreated: false,
+        pictureSelector: 0,
+        lastField: true,
+        grammarCheckOn: false
+      });
+    }
+  }
+
+  /**
+   * The method puts the textfield that is connected to the button clicked into
+   * the edit-mode, so that the text of the textfield can be extended, deleted etc. GUI.004.
+   * @param index 
+    */
+  startEditMode(index: number): void {
+    // Only allow 1 single textfield to be in edit mode at a given point in time.
+    if (this.activeTextfieldIndex !&#x3D;&#x3D; null) {
+      this.textfields[this.activeTextfieldIndex].editMode &#x3D; false;
+    }
+    this.textfields[index].editMode &#x3D; true;
+    this.activeTextfieldIndex &#x3D; index;
+    // Set the initial value of the textContent form control to the corresponding textfield value.
+    const textContentControl &#x3D; this.textForm.get(&#x27;textContent&#x27;);
+    if (textContentControl) {
+      textContentControl.setValue(this.textfields[index].text);
+    }
+  }
+
+  /**
+   * The method stops the edit mode for the Text field that is connected to the button clicked (with index c).
+   * That means that the static part of the Textfield gets displayed and the dynamic part gets hidden. GUI.004.
+   * @param index 
+   */
+  stopEditMode(index: number): void {
+    this.textfields[index].editMode &#x3D; false;
+    this.activeTextfieldIndex &#x3D; null;
+  }
+
+
+  /**
+   * 1. The method updates the value of property &quot;text&quot; of the textfield that is in edit-mode at the time 
+   *    the check-mark-button gets clicked (see HTML-Layout: class &quot;save-button&quot;). (GUI.004).
+   * 2. Calls the method stopEditMode. (GUI.004).
+   * @param index 
+   */
+  saveTextField(index: number): void {
+    const textContentControl &#x3D; this.textForm.get(&#x27;textContent&#x27;);
+    //Reassure that &quot;textContent&quot; was not null.
+    if (textContentControl) {
+      const newText &#x3D; textContentControl.value;
+      if (textContentControl.value !&#x3D; this.textfields[index].text) {
+        this.textfields[index].text &#x3D; newText;
+
+        this.textForm.reset();
+        //set this.picturesForTextfieldCreated to false, so the &quot;Bild generieren&quot;-button 
+        //gets rendered for this textfield.
+        //Do this just in case the user changed the text-content of the field,
+        //so he might want to create a new picture for the new text she wrote. GUI.004, GUI.005.
+        this.textfields[index].picturesCreated &#x3D; false;
+      }
+    }
+    this.stopEditMode(index);
+  }
+
+
+  /**
+   * Returns true if any text field is currently in edit mode. GUI.004.
+   * @returns
+   */
+  anyTextFieldInEditMode(): boolean {
+
+
+    return this.textfields.some(field &#x3D;&gt; field.editMode);
+  }
+
+
+  /**
+   * 1. The current Text from the corresponding textfield gets sent to the Service
+   *    of the Text-to-Picture-Generator with the HTTP-Post-Request.
+   * 2. The Picture-Generation takes some time, that&#x27;s the reason that the Server
+   *    returns an ID at first.
+   * 3. After that the thread is put to sleep for some time,
+   *    then the retrieved ID gets inserted into a second HTTP-Get-Request that gets 
+   *    sent to the Text-to-Picture-Generator.
+   *    The Text-to-Picture-Service returns the 4 pictures created that are connected to that ID.
+   * 4. Finally, the Links to the 4 pictures get inserted in the textfields array, which is
+   *    connected to the the HTML-Layout via Input-Binding (class: created-picture. HTML-Attribute: src). GUI.005.
+   * @param index 
+   */
+  createPicturesFromText(index: number): void {
+
+    //debugger
+    //text of the corresponding text field.
+    const textPrompt &#x3D; this.textfields[index].text;
+
+    console.log(textPrompt)
+    // HTTP-Post-Call to the text-to-picture-Service.
+    this.textToPictureService.createPicturesfromTextwithLeonardoAI(textPrompt).subscribe(data &#x3D;&gt; {
+
+      //The LeonardoAI-API returns a ID for the generated Picture.
+      this.textfields[index].pictureID &#x3D; data.sdGenerationJob.generationId;
+      console.log(this.textfields[index].pictureID)
+
+      //create a boolean to let the user see that the pictures get loaded with an animation.
+      this.textfields[index].picturesLoading &#x3D; true;
+
+      //set this boolean to true, so the &quot;Bild generieren&quot;-button doesn&#x27;t get rendered for this textfield.
+      this.textfields[index].picturesCreated &#x3D; true;
+
+      // delay of 13 seconds, cause the creation of the pictures needs a bit time.
+      this.sleep(13000).subscribe(() &#x3D;&gt; {
+
+        //The created Picture can be fetched with the ID.
+        this.textToPictureService.getCreatedPicturesFromLeonardoAI(this.textfields[index].pictureID).subscribe(response &#x3D;&gt; {
+          // the picture gets inserted into the thextFields array.
+          //data.data[0].url
+          //console.log(response.generations_by_pk.generated_images[1].url)
+          this.textfields[index].picturesLoading &#x3D; false
+          //const pictureUrl &#x3D; URL.createObjectURL(response.generations_by_pk.generated_images[1].url);
+          for (let i &#x3D; 0; i &lt;&#x3D; response.generations_by_pk.generated_images.length; i++) {
+            console.log(response.generations_by_pk.generated_images[i]);
+            this.textfields[index].pictureURLs[i] &#x3D; response.generations_by_pk.generated_images[i].url;
+          } // Updates the generatedPicture property.
+
+        });
+      });
+      //DallE: data.data[0].url
+      //consumerPollProducersForChange
+    });
+  }
+
+
+  /**
+   * the method navigates the Client to the Template-List-Component (Main Menu). (GUI.007).
+   */
+  navigateToTemplateList(): void {
+
+    //console.log(&quot;what&quot;)
+    // The Navigation to the Template-List-Component.
+    this.router.navigate([&quot;/template-list&quot;]);
+  }
+
+
+  /**
+   * The spellcheck-Attribut has got a property binding to the field.grammarCheckOn boolean.
+   * If the user clicks the button to turn on the Grammar Check the boolean is set to true.
+   * At the same time the button is transformed to turn off the Grammar Check 
+   * with the next click which then sets the field.grammarCheckOn to false. GUI.006.
+   * @param index 
+   */
+  checkGrammar(index: number): void {
+    if (this.textfields[index].grammarCheckOn) {
+      this.textfields[index].grammarCheckOn &#x3D; false;
+      this.grammatikButtonText &#x3D; &quot;Grammatik-Test einschalten.&quot;;
+    } else if (this.textfields[index].grammarCheckOn &#x3D;&#x3D;&#x3D; false) {
+      this.textfields[index].grammarCheckOn &#x3D; true;
+      this.grammatikButtonText &#x3D; &quot;Grammatik-Test abschalten.&quot;;
+    }
+  }
+  //const text &#x3D; this.textfields[index].text;
+  //const words &#x3D; text.split(&#x27; &#x27;);
+
+  // Perform grammar check logic for each word.
+  //const updatedGrammarFlags &#x3D; words.map(word &#x3D;&gt; isGrammaticallyIncorrect(word));
+
+  // Update the grammarFlags array for the corresponding text field.
+  //this.textFields[index].grammarFlags &#x3D; updatedGrammarFlags;
+
+
+  /**
+   * make the thread sleep. Returns the observable timer that emits the number
+   *  0 as the notification after having waited for the duration to pass. GUI.005.
+   * @param duration 
+   * @returns 
+   *                     
+   */
+  sleep(duration: number) {
+    return timer(duration);
+  }
+
+  /**
+   * The method to increment the pictureSelector and cycle through values 0, 1, 2, 3.
+   * The method gets called when the user clicks the arrow-button to show a different picture.
+   * There are 4 pictures provided for each textField, if the user finished the picture creation process. GUI.005.
+   * @param index 
+   */
+  incrementPictureSelector(index: number) {
+    this.textfields[index].pictureSelector &#x3D; (this.textfields[index].pictureSelector + 1) % 4;
+  }
+
+
+  /**
+   * Create textfield after the current last textfield. GUI.004.
+   */
+  createTextField() {
+    this.textfields.push({
+      text: &quot;&quot;,
+      editMode: false,
+      editModeForbidden: false,
+      pictureID: &quot;&quot;,
+      pictureURLs: [],
+      picturesLoading: false,
+      picturesCreated: false,
+      pictureSelector: 0,
+      lastField: true,
+      grammarCheckOn: false
+    });
+
+    this.textfields[this.textfields.length - 2].lastField &#x3D; false;
+  }
+
+}
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">
+
+&lt;!--1. text fields to be edited by the user (GUI.004). --&gt;
+
+&lt;div class&#x3D;&quot;book-rack&quot;&gt;
+
+&lt;div class&#x3D;&quot;book-rack-top&quot;&gt;
+
+  &lt;!--name of the template--&gt;
+  &lt;h4 id&#x3D;&quot;template-name&quot; alt&#x3D;&quot;Name der Kurzgeschichte.&quot;&gt;{{ templateName }}&lt;/h4&gt;
+
+  &lt;!--the Click on this button calls the method navigateToTemplateList. GUI.007. --&gt;
+  &lt;button mat-button (click)&#x3D;&quot;navigateToTemplateList()&quot;
+                      class&#x3D;&quot;navigation-button&quot;
+                      alt&#x3D;&quot;Zurück ins Hauptmenü.&quot;&gt;Zurück ins Hauptmenü&lt;/button&gt;
+ 
+&lt;/div&gt;
+
+&lt;div *ngFor&#x3D;&quot;let field of textfields; let c &#x3D; index&quot; class&#x3D;&quot;container&quot;&gt;
+
+&lt;div class&#x3D;&quot;book-rack-middle&quot;&gt;
+ 
+  &lt;div class&#x3D;&quot;text-editor&quot;&gt;
+      &lt;!-- The Text field can be either in Edit mode or not--&gt;
+        &lt;div *ngIf&#x3D;&quot;!field.editMode; else editModeTemplate&quot;
+              class&#x3D;&quot;text-field&quot;&gt;
+          &lt;!-- binds the HTML-elements to the values of the textField array of the TypeScript-File. --&gt;
+          &lt;!-- Makes the template use Line-breaks if the text is too long. --&gt;
+          &lt;p [style.white-space]&#x3D;&quot;field.text.includes(&#x27;\n&#x27;) ? &#x27;pre&#x27; : &#x27;pre-wrap&#x27;&quot;
+              wrap&#x3D;&quot;soft&quot; rows&#x3D;&quot;6&quot;
+              maxlength&#x3D;&quot;333&quot; alt&#x3D;&quot;Textfeld fest. Nicht in Bearbeitungs-Modus.&quot;&gt;{{field.text}}&lt;/p&gt;
+
+        &lt;/div&gt;
+
+          &lt;ng-template #editModeTemplate lang&#x3D;&quot;de&quot;&gt;
+            &lt;form [formGroup]&#x3D;&quot;textForm&quot;
+                  class&#x3D;&quot;text-field-edit-form&quot;
+                  lang&#x3D;&quot;de&quot;&gt;
+              &lt;div class&#x3D;&quot;text-field-edit-wrapper&quot; lang&#x3D;&quot;de&quot;&gt;
+                 &lt;!--Property binding: the [spellcheck]-attribute is set as target property. 
+                  target properties are the DOM properties to which new values can get assigned in the Typescript File. --&gt;
+                  &lt;textarea class&#x3D;&quot;text-field-segment&quot; 
+                            lang&#x3D;&quot;de&quot;
+                            id&#x3D;&quot;text-field-{{c}}&quot;
+                            formControlName&#x3D;&quot;textContent&quot;
+                            wrap&#x3D;&quot;soft&quot;
+                            rows&#x3D;&quot;6&quot;
+                            maxlength&#x3D;&quot;333&quot;
+                            [spellcheck]&#x3D;&quot;field.grammarCheckOn&quot;
+                            alt&#x3D;&quot;Textfeld in Bearbeitungs-Modus.&quot;&gt;&lt;/textarea&gt;
+                  &lt;!-- 4. button to turn the grammar check (mistakes red underlined.) of the written text in the text field on and off. (GUI.006).--&gt;
+                  &lt;button mat-button (click)&#x3D;&quot;checkGrammar(c)&quot;
+                                      class&#x3D;&quot;grammar-test-button&quot;
+                                      alt&#x3D;&quot;Grammatik-Text aktivieren.&quot;&gt;
+                                      {{grammatikButtonText}}
+                                    &lt;/button&gt;
+                  &lt;!--With the Click on this button the text field leaves the Edit-Mode 
+                            and the Text-Content is written into the concrete textField instead. GUI.004.--&gt;
+                  &lt;button mat-button (click)&#x3D;&quot;saveTextField(c)&quot;
+                                      class&#x3D;&quot;save-button&quot;
+                                      alt&#x3D;&quot;Textfeld speichern.&quot;&gt;
+                    &amp;#10003;  &lt;!--Check mark icon: &amp;#10003; --&gt;
+                 
+                  &lt;/button&gt;
+              &lt;/div&gt;
+            &lt;/form&gt;
+          &lt;/ng-template&gt;
+
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;text-edit-button-wrapper&quot; [ngStyle]&#x3D;&quot;{&#x27;visibility&#x27;: (!anyTextFieldInEditMode() &amp;&amp; !field.editModeForbidden) ? &#x27;visible&#x27; : &#x27;hidden&#x27;}&quot;&gt;
+         &lt;!-- When the Pencil button gets clicked, 
+                    the text field can be edited. (GUI.004).--&gt;
+              &lt;button mat-button (click)&#x3D;&quot;startEditMode(c)&quot;
+                                 class&#x3D;&quot;text-edit-button&quot;
+                                 alt&#x3D;&quot;Textfeld bearbeiten.&quot;&gt;
+                  &amp;#9998;  &lt;!--Pencil-Icon: &amp;#9998; --&gt;
+        &lt;/button&gt;
+
+          &lt;/div&gt;
+
+          &lt;!-- present the created picture to the user inside a frame. GUI.005.--&gt;
+          &lt;div class&#x3D;&quot;created-picture-frame&quot; [style.margin-left.px]&#x3D;&quot;field.editMode ? 296 : 263&quot;&gt;
+            &lt;span *ngIf&#x3D;&quot;field.picturesLoading&quot; class&#x3D;&quot;spinner&quot;&gt;&lt;/span&gt;
+         &lt;img *ngIf&#x3D;&quot;field.picturesCreated &amp;&amp; !field.picturesLoading&quot; id&#x3D;&quot;createdPicture&quot; class&#x3D;&quot;created-picture&quot; [src]&#x3D;&quot;field.pictureURLs[field.pictureSelector]&quot; alt&#x3D;&quot;Das generierte Bild.&quot;&gt;
+         
+         &lt;/div&gt;
+         
+
+         &lt;div *ngIf&#x3D;&quot;field.picturesCreated &amp;&amp; !field.picturesLoading &amp;&amp; !(field.pictureURLs.length &#x3D;&#x3D; 1)&quot; class&#x3D;&quot;arrow-button&quot;&gt; &lt;!--*ngIf&#x3D;&quot;field.picturesCreated&quot;--&gt;
+          &lt;button mat-button (click)&#x3D;&quot;incrementPictureSelector(c)&quot; &gt;&amp;#10148;&lt;/button&gt;
+          &lt;p class&#x3D;&quot;pictureSelector&quot;&gt; {{field.pictureSelector+1}}/4 &lt;/p&gt;
+         &lt;/div&gt;
+      
+          &lt;!-- button to get the picture from the text-to-picture-generator-api
+            for the corresponding text field. GUI.005.--&gt;
+            &lt;button mat-button *ngIf&#x3D;&quot;!field.editMode &amp;&amp; !field.picturesCreated&quot; class&#x3D;&quot;create-pictures-button&quot; (click)&#x3D;&quot;createPicturesFromText(c)&quot; alt&#x3D;&quot;Bild zum Textfeld generieren lassen.&quot;&gt;
+        
+              Bilder generieren.
+           
+            &lt;/button&gt;
+
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;book-rack-bottom&quot;&gt;
+
+          &lt;!--button to create a new textField. GUI.004.--&gt;
+          &lt;button *ngIf&#x3D;&quot;!anyTextFieldInEditMode() &amp;&amp; !field.editModeForbidden &amp;&amp;field.lastField&quot; 
+          class&#x3D;&quot;create-text-field-button&quot; (click)&#x3D;&quot;createTextField()&quot; alt&#x3D;&quot;Regal-Reihe, das heißt das nächste Textfeld mit dem Bilderrahmen hinzufügen.&quot;&gt;
+            Regal-Reihe hinzufügen.
+          &lt;/button&gt;
+           &lt;!--the Click on this button calls the method navigateToTemplateList. GUI.007. --&gt;
+            &lt;button mat-button *ngIf&#x3D;&quot;!anyTextFieldInEditMode() &amp;&amp; field.lastField&quot;
+                               (click)&#x3D;&quot;navigateToTemplateList()&quot; 
+                               id&#x3D;&quot;navigation-button-bottom&quot;
+                               class&#x3D;&quot;navigation-button&quot; 
+                               alt&#x3D;&quot;Zurück ins Hauptmenü.&quot;&gt;Zurück ins Hauptmenü&lt;/button&gt;
+          
+      
+          
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+  &lt;/div&gt;
+    
+   
+
+ </code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><!--1. text fields to be edited by the user (GUI.004). --><div class="book-rack"><div class="book-rack-top">  <!--name of the template-->  <h4 id="template-name" alt="Name der Kurzgeschichte.">{{ templateName }}</h4>  <!--the Click on this button calls the method navigateToTemplateList. GUI.007. -->  <button mat-button (click)="navigateToTemplateList()"                      class="navigation-button"                      alt="Zurück ins Hauptmenü.">Zurück ins Hauptmenü</button> </div><div *ngFor="let field of textfields; let c = index" class="container"><div class="book-rack-middle">   <div class="text-editor">      <!-- The Text field can be either in Edit mode or not-->        <div *ngIf="!field.editMode; else editModeTemplate"              class="text-field">          <!-- binds the HTML-elements to the values of the textField array of the TypeScript-File. -->          <!-- Makes the template use Line-breaks if the text is too long. -->          <p [style.white-space]="field.text.includes(\'\n\') ? \'pre\' : \'pre-wrap\'"              wrap="soft" rows="6"              maxlength="333" alt="Textfeld fest. Nicht in Bearbeitungs-Modus.">{{field.text}}</p>        </div>          <ng-template #editModeTemplate lang="de">            <form [formGroup]="textForm"                  class="text-field-edit-form"                  lang="de">              <div class="text-field-edit-wrapper" lang="de">                 <!--Property binding: the [spellcheck]-attribute is set as target property.                   target properties are the DOM properties to which new values can get assigned in the Typescript File. -->                  <textarea class="text-field-segment"                             lang="de"                            id="text-field-{{c}}"                            formControlName="textContent"                            wrap="soft"                            rows="6"                            maxlength="333"                            [spellcheck]="field.grammarCheckOn"                            alt="Textfeld in Bearbeitungs-Modus."></textarea>                  <!-- 4. button to turn the grammar check (mistakes red underlined.) of the written text in the text field on and off. (GUI.006).-->                  <button mat-button (click)="checkGrammar(c)"                                      class="grammar-test-button"                                      alt="Grammatik-Text aktivieren.">                                      {{grammatikButtonText}}                                    </button>                  <!--With the Click on this button the text field leaves the Edit-Mode                             and the Text-Content is written into the concrete textField instead. GUI.004.-->                  <button mat-button (click)="saveTextField(c)"                                      class="save-button"                                      alt="Textfeld speichern.">                    &#10003;  <!--Check mark icon: &#10003; -->                                   </button>              </div>            </form>          </ng-template>        </div>        <div class="text-edit-button-wrapper" [ngStyle]="{\'visibility\': (!anyTextFieldInEditMode() && !field.editModeForbidden) ? \'visible\' : \'hidden\'}">         <!-- When the Pencil button gets clicked,                     the text field can be edited. (GUI.004).-->              <button mat-button (click)="startEditMode(c)"                                 class="text-edit-button"                                 alt="Textfeld bearbeiten.">                  &#9998;  <!--Pencil-Icon: &#9998; -->        </button>          </div>          <!-- present the created picture to the user inside a frame. GUI.005.-->          <div class="created-picture-frame" [style.margin-left.px]="field.editMode ? 296 : 263">            <span *ngIf="field.picturesLoading" class="spinner"></span>         <img *ngIf="field.picturesCreated && !field.picturesLoading" id="createdPicture" class="created-picture" [src]="field.pictureURLs[field.pictureSelector]" alt="Das generierte Bild.">                  </div>                  <div *ngIf="field.picturesCreated && !field.picturesLoading && !(field.pictureURLs.length == 1)" class="arrow-button"> <!--*ngIf="field.picturesCreated"-->          <button mat-button (click)="incrementPictureSelector(c)" >&#10148;</button>          <p class="pictureSelector"> {{field.pictureSelector+1}}/4 </p>         </div>                <!-- button to get the picture from the text-to-picture-generator-api            for the corresponding text field. GUI.005.-->            <button mat-button *ngIf="!field.editMode && !field.picturesCreated" class="create-pictures-button" (click)="createPicturesFromText(c)" alt="Bild zum Textfeld generieren lassen.">                      Bilder generieren.                       </button>      </div>      <div class="book-rack-bottom">          <!--button to create a new textField. GUI.004.-->          <button *ngIf="!anyTextFieldInEditMode() && !field.editModeForbidden &&field.lastField"           class="create-text-field-button" (click)="createTextField()" alt="Regal-Reihe, das heißt das nächste Textfeld mit dem Bilderrahmen hinzufügen.">            Regal-Reihe hinzufügen.          </button>           <!--the Click on this button calls the method navigateToTemplateList. GUI.007. -->            <button mat-button *ngIf="!anyTextFieldInEditMode() && field.lastField"                               (click)="navigateToTemplateList()"                                id="navigation-button-bottom"                               class="navigation-button"                                alt="Zurück ins Hauptmenü.">Zurück ins Hauptmenü</button>                                </div>    </div>  </div>        </div>'
+    var COMPONENTS = [{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DialogComponent', 'selector': 'app-dialog'},{'name': 'TemplateListComponent', 'selector': 'app-template-list'},{'name': 'TextEditorComponent', 'selector': 'app-text-editor'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'TextEditorComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'TextEditorComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

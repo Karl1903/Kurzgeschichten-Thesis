@@ -1,0 +1,38 @@
+
+
+
+*{ background-color: rgba(27, 26, 26, 0.904); }
+
+
+.start-text {
+
+padding: 40px;
+font-size: 14px;
+
+}
+
+ol {
+    list-style-type: none;
+    padding: 0;
+    cursor: pointer;
+    margin-top: 13px;
+    margin-left: 93px;
+    max-width: 630px;
+    font-size: 14px;
+  }
+
+  li {
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 5px;
+    margin-top: 23px;
+   
+    max-width: 630px;
+    font-size: 14px;
+  }
+
+  li:hover {
+    background-color: #013101;
+  }
+
+.startScreenPics{ max-width: 633px; max-height: 633px; padding: 13px; margin-left: 23px;}
