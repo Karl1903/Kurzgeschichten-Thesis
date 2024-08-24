@@ -6,6 +6,8 @@ Die Schritte der Planung der Programmierung der Webapplikation finden sich in Ka
 
 Die Deskription von ausgewählten Details der Programmierung finden sich in Kapitel 5 (Ergebnisse) der Thesis.
 
+Zusätzliche Features und Geschäftsmodelle Kapitel 6.
+
 ## Setup
 
 Zum starten der Webapplikation sollte mit dem Terminal in den Ordner mit dem Namen `proof-of-concept` navigiert werden.
